@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-app
+  namespace: incubation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+     # nodeSelector:
+     #"kubernetes.io/os": linux
+      containers:
+      - name: hello-app-container
+        image: revathi391k/incubation/app:v0.0.1
+        ports:
+        - containerPort: 8080
